@@ -6,4 +6,4 @@ select
   EMAIL as email,
   PHONE_NUM as phone_number,
   SSN_NUM as ssn
-from {{ source('raw_telecom', 'customer_master') }}
+from {{ ref('raw_customer') }}
