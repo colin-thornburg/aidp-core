@@ -1,0 +1,16 @@
+version: 2
+
+entity_config:
+  entity_name: dim_customer
+  entity_type: dimension
+  business_domain: customer_management
+  data_owner: billing_team
+  description: "Core customer dimension containing customer master data"
+  staging_model: stg_customer
+  primary_key: customer_id
+  pii_columns:
+    - column: ssn
+      handling: hash
+    - column: email
+      handling: mask
+      mask_type: email

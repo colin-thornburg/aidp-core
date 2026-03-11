@@ -1,0 +1,10 @@
+version: 2
+
+entity_config:
+  entity_name: fact_billing
+  entity_type: fact
+  business_domain: revenue
+  data_owner: finance_team
+  description: "Billing transaction fact table"
+  staging_model: stg_billing_event
+  primary_key: billing_event_id

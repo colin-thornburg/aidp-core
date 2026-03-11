@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_telecom
+    schema: raw_telecom
+    tables:
+      - name: customer_master
+      - name: billing_event
+      - name: subscriber_master

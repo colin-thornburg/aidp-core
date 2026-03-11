@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Core customer dimension"
+    access: public
+    latest_version: 1
+    config:
+      contract:
+        enforced: true
+    versions:
+      - v: 1
+        columns:
+          - name: customer_id
+            data_type: string
+          - name: customer_name
+            data_type: string
+          - name: email_masked
+            data_type: string
+  - name: fact_billing
+    description: "Billing transaction fact table"
+    access: public
+    latest_version: 1
+    config:
+      contract:
+        enforced: true
+    versions:
+      - v: 1
+        columns:
+          - name: billing_event_id
+            data_type: string
+          - name: customer_id
+            data_type: string
