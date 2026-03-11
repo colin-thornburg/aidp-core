@@ -1,4 +1,5 @@
-{{ config(materialized='incremental', unique_key='billing_event_id') }}
+{{ config(materialized='incremental', unique_key='billing_event_id', on_schema_change='append_new_columns') }}
+
 
 select
   billing_event_id,
