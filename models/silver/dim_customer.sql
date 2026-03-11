@@ -10,7 +10,7 @@ select
   base.customer_id,
   base.customer_name,
   acct.account_type,
-  {{ control_fields() }},
+  {{ control_fields() }}
   {{ apply_pii_policy([
     {"column": "email", "handling": "mask", "mask_type": "email"},
     {"column": "phone_number", "handling": "mask", "mask_type": "phone"},

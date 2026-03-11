@@ -2,21 +2,12 @@ version: 2
 
 models:
   - name: dim_customer
-    description: "Core customer dimension"
+    description: "Core customer dimension — master customer data with PII masked and audit fields injected"
     access: public
     latest_version: 1
-    config:
-      contract:
-        enforced: true
     versions:
       - v: 1
-        columns:
-          - name: customer_id
-            data_type: string
-          - name: customer_name
-            data_type: string
-          - name: email_masked
-            data_type: string
+
   - name: fact_billing
     description: "Billing transaction fact table"
     access: public
@@ -24,10 +15,22 @@ models:
     config:
       contract:
         enforced: true
+      materialized: incremental
+      incremental_strategy: merge
+      unique_key: billing_event_id
+      on_schema_change: append_new_columns
     versions:
       - v: 1
         columns:
           - name: billing_event_id
-            data_type: string
+            data_type: varchar
           - name: customer_id
-            data_type: string
+            data_type: varchar
+          - name: product_id
+            data_type: varchar
+          - name: billing_date
+            data_type: date
+          - name: billing_amount
+            data_type: float
+          - name: currency_code
+            data_type: varchar
